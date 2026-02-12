@@ -12,8 +12,6 @@ import {
   Zap,
 } from "lucide-react";
 
-
-
 const fadeUp = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
   show: (i = 0) => ({
@@ -76,7 +74,7 @@ export default function Hero() {
             <span className="relative inline-block">
               <span className="absolute -inset-2 rounded-[26px] bg-gradient-to-r from-emerald-400/25 to-transparent blur-2xl" />
               <span className="relative bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-                client-booking machine
+                consistent booking system
               </span>
             </span>
           </motion.h1>
@@ -89,9 +87,10 @@ export default function Hero() {
             custom={2}
             className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            We help clinics, agencies, and local service businesses capture more
-            leads, respond instantly, automate follow-ups, and convert inquiries
-            into booked calls — without hiring extra staff.
+            We design high-converting websites and build simple automations that
+            help clinics, agencies, and local service businesses capture leads,
+            reply faster, and turn inquiries into booked calls without hiring
+            extra staff.
           </motion.p>
 
           {/* CTA */}
@@ -128,7 +127,7 @@ export default function Hero() {
             custom={4}
             className="mt-4 text-xs text-muted-foreground"
           >
-            Built with secure, modern tools. Clear scope. Clean delivery.
+            Clear scope. Fast delivery. Secure setup.
           </motion.p>
 
           {/* Trust items */}

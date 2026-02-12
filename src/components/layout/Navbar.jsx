@@ -26,7 +26,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50"
     >
       {/* Glass background (theme-safe) */}
-      <div className="absolute inset-0 border-b border-border bg-background/70 backdrop-blur-2xl" />
+      <div className="absolute inset-0 border-b border-border bg-background/100 backdrop-blur-3xl" />
 
       {/* Subtle accent strip */}
       <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-emerald-400/0 via-emerald-400/50 to-emerald-400/0" />

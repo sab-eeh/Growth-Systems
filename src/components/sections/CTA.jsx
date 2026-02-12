@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Phone, Mail, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
@@ -17,6 +18,7 @@ const fadeUp = {
 
 export default function CTA() {
   const reduceMotion = useReducedMotion();
+  const router = useRouter();
 
   const [form, setForm] = useState({
     name: "",
@@ -69,6 +71,7 @@ export default function CTA() {
       }
 
       setStatus("success");
+      router.push("/thanks");
 
       // Optional: reset fields after success
       setForm({
