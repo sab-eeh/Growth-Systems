@@ -45,7 +45,7 @@ export default function Navbar() {
 
             <div className="leading-tight">
               <p className="text-[14px] font-semibold tracking-tight">
-                Growth Systems
+                Growth Systems +
               </p>
               <p className="text-[11px] font-medium tracking-wide text-muted-foreground">
                 Automation Consulting
