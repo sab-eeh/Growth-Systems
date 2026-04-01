@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
+      {/* <Stats /> */}
       <Problems />
       <Solution />
       <Integrations />
