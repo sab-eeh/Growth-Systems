@@ -5,13 +5,13 @@ import Solution from "@/components/sections/Solution";
 import Integrations from "@/components/sections/Integrations";
 import HowItWorks from "@/components/sections/HowItWorks";
 import SystemExamples from "@/components/sections/SystemExamples";
-import Engagement from "@/components/sections/Engagement";
 import Fit from "@/components/sections/Fit";
 import Industries from "@/components/sections/Industries";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
 import Packages from "@/components/sections/Packages";
+import ChatSystem from "@/components/sections/ChatSystem";
 
 export default function Home() {
   return (
@@ -20,11 +20,11 @@ export default function Home() {
       <Stats />
       <Problems />
       <Solution />
+      {/* <ChatSystem /> */}
       <Integrations />
       <HowItWorks />
       <SystemExamples />
-      <Packages/>
-      {/* <Engagement /> */}
+      <Packages />
       <Fit />
       <Industries />
       <FAQ />
