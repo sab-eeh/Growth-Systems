@@ -1,4 +1,3 @@
-// components/sections/Hero.jsx
 "use client";
 
 import Link from "next/link";
@@ -19,8 +18,8 @@ const fadeUp = {
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.75,
-      delay: 0.1 * i,
+      duration: 0.7,
+      delay: 0.08 * i,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -31,19 +30,12 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Background (theme-safe) */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        {/* Soft glow fields */}
-        <div className="absolute inset-0 bg-[radial-gradient(1100px_600px_at_50%_0%,rgba(16,185,129,0.14),transparent_60%),radial-gradient(900px_600px_at_20%_40%,rgba(255,255,255,0.08),transparent_55%),radial-gradient(900px_600px_at_80%_60%,rgba(0,0,0,0.12),transparent_55%)] dark:bg-[radial-gradient(1200px_650px_at_50%_0%,rgba(16,185,129,0.14),transparent_60%),radial-gradient(900px_600px_at_20%_40%,rgba(255,255,255,0.06),transparent_55%),radial-gradient(900px_600px_at_80%_60%,rgba(0,0,0,0.25),transparent_55%)]" />
-
-        {/* Subtle vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(900px_700px_at_50%_0%,rgba(0,0,0,0.06),transparent_60%)] dark:bg-[radial-gradient(900px_700px_at_50%_0%,rgba(0,0,0,0.22),transparent_60%)]" />
-
-        {/* Noise */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.035] [background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22160%22 height=%22160%22 filter=%22url(%23n)%22 opacity=%220.6%22/%3E%3C/svg%3E')]" />
+        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_50%_0%,rgba(16,185,129,0.14),transparent_60%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-14 sm:pb-20">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
           <motion.div
@@ -53,44 +45,40 @@ export default function Hero() {
             custom={0}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1.5"
           >
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-emerald-400/20 bg-emerald-400/10">
-              <Sparkles className="h-3.5 w-3.5 text-emerald-500 dark:text-emerald-300" />
-            </span>
-
-            <p className="text-xs font-medium text-muted-foreground">
-              Websites + automation systems for service businesses
+            <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
+            <p className="text-xs sm:text-sm font-medium text-muted-foreground">
+              Built for service businesses getting leads but losing conversions
             </p>
           </motion.div>
 
-          {/* Heading */}
+          {/* HEADLINE */}
           <motion.h1
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
             custom={1}
-            className="mt-6 text-balance text-[40px] font-semibold leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
+            className="mt-6 font-semibold tracking-tight leading-tight
+              text-3xl 
+              sm:text-4xl 
+              md:text-5xl 
+              lg:text-6xl"
           >
-            Turn your website into a{" "}
-            <span className="relative inline-block">
-              <span className="absolute -inset-2 rounded-[26px] bg-gradient-to-r from-emerald-400/25 to-transparent blur-2xl" />
-              <span className="relative bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-                consistent booking system
-              </span>
-            </span>
+            Stop losing clients to{" "}
+            <span className="text-emerald-400">slow replies</span> and missed
+            follow-ups
           </motion.h1>
 
-          {/* Subtext */}
+          {/* SUBTEXT */}
           <motion.p
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
             custom={2}
-            className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+            className="mx-auto mt-5 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground"
           >
-            We design high-converting websites and build simple automations that
-            help clinics, agencies, and local service businesses capture leads,
-            reply faster, and turn inquiries into booked calls without hiring
-            extra staff.
+            We install a simple system that replies instantly, follows up
+            automatically, and turns more inquiries into booked appointments
+            without hiring extra staff.
           </motion.p>
 
           {/* CTA */}
@@ -99,59 +87,49 @@ export default function Hero() {
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
             custom={3}
-            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <Link
               href="#audit"
-              aria-label="Request a free audit"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 sm:w-auto"
+              className="w-full sm:w-auto min-w-[220px] text-center rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-400 transition"
             >
-              Free Audit
-              <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              See Where You’re Losing Leads
             </Link>
 
             <Link
-              href="#how-it-works"
-              aria-label="See how it works"
-              className="inline-flex w-full items-center justify-center rounded-2xl border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground/85 transition hover:bg-card/70 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-auto"
+              href="#demo"
+              className="w-full sm:w-auto min-w-[180px] text-center rounded-xl border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground/85 hover:bg-card/70 transition"
             >
-              See how it works
+              View Live Demo
             </Link>
           </motion.div>
 
-          {/* Micro-trust line (no fake claims) */}
+          {/* Trust line */}
           <motion.p
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
             custom={4}
-            className="mt-4 text-xs text-muted-foreground"
+            className="mt-4 text-xs sm:text-sm text-muted-foreground"
           >
-            Clear scope. Fast delivery. Secure setup.
+            No fluff. No complex tools. Just a system that works.
           </motion.p>
 
-          {/* Trust items */}
+          {/* TRUST GRID (FIXED 🔥) */}
           <motion.div
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
             custom={5}
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
+            className="mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4"
           >
-            <TrustItem icon={ShieldCheck} text="Reliable & secure setup" />
-            <TrustItem icon={Zap} text="Fast implementation" />
-            <TrustItem icon={CalendarCheck} text="Clear milestones" />
-            <TrustItem icon={MessageSquareText} text="AI-assisted responses" />
+            <TrustItem icon={ShieldCheck} text="Reliable system setup" />
+            <TrustItem icon={Zap} text="Installed in 7 days" />
+            <TrustItem icon={CalendarCheck} text="More booked appointments" />
+            <TrustItem icon={MessageSquareText} text="Instant responses" />
           </motion.div>
 
-          {/* Subtle divider */}
-          <motion.div
-            variants={fadeUp}
-            initial={reduceMotion ? "show" : "hidden"}
-            animate="show"
-            custom={6}
-            className="mx-auto mt-10 h-px w-[90%] max-w-xl bg-gradient-to-r from-transparent via-border to-transparent"
-          />
+          <div className="mx-auto mt-10 h-px w-full max-w-xl bg-gradient-to-r from-transparent via-border to-transparent" />
         </div>
       </div>
     </section>
@@ -160,11 +138,11 @@ export default function Hero() {
 
 function TrustItem({ icon: Icon, text }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card/40">
+    <div className="flex items-center gap-3 p-3 rounded-xl border border-border bg-card/30 h-full">
+      <div className="flex-shrink-0 h-9 w-9 flex items-center justify-center rounded-lg bg-card/50 border border-border">
         <Icon className="h-4 w-4 text-foreground/80" />
-      </span>
-      <p className="text-sm font-medium text-muted-foreground">{text}</p>
+      </div>
+      <p className="text-sm text-muted-foreground leading-snug">{text}</p>
     </div>
   );
 }

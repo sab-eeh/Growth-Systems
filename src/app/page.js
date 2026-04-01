@@ -11,6 +11,7 @@ import Industries from "@/components/sections/Industries";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
+import Packages from "@/components/sections/Packages";
 
 export default function Home() {
   return (
@@ -22,7 +23,8 @@ export default function Home() {
       <Integrations />
       <HowItWorks />
       <SystemExamples />
-      <Engagement />
+      <Packages/>
+      {/* <Engagement /> */}
       <Fit />
       <Industries />
       <FAQ />

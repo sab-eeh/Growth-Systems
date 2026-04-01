@@ -1,104 +1,129 @@
-// components/Sections/Solution.jsx
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { CalendarCheck, MessageSquare, RefreshCcw, Bot } from "lucide-react";
 import Section from "../layout/Section";
 
-
 const fadeUp = {
-  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 16, filter: "blur(8px)" },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay: 0.06 * i, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 export default function Solution() {
   const reduceMotion = useReducedMotion();
 
-  const features = [
-    {
-      icon: CalendarCheck,
-      title: "Online booking",
-      description:
-        "Let clients book instantly — with availability, confirmations, and routing.",
-    },
+  const steps = [
     {
       icon: MessageSquare,
-      title: "Instant responses",
+      title: "They contact you",
       description:
-        "Auto-reply via SMS, WhatsApp, or email within seconds — even after hours.",
-    },
-    {
-      icon: RefreshCcw,
-      title: "Automated follow-ups",
-      description:
-        "Reduce no-shows and recover cold leads with reminders and sequences.",
+        "From your website, WhatsApp, or ads every inquiry enters your system instantly.",
     },
     {
       icon: Bot,
-      title: "AI inquiry handling",
+      title: "They get an instant reply",
       description:
-        "Capture, qualify, and organize inquiries so your team stays focused.",
+        "Within seconds, they receive a response that answers questions and guides them forward.",
+    },
+    {
+      icon: CalendarCheck,
+      title: "They get booked",
+      description:
+        "Instead of waiting, they’re directed to book instantly based on your availability.",
+    },
+    {
+      icon: RefreshCcw,
+      title: "They are followed up automatically",
+      description:
+        "Reminders, confirmations, and follow-ups ensure they show up and don’t forget.",
     },
   ];
 
   return (
     <Section
-      id="solutions"
-      className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24"
+      id="system"
+      className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 py-16 sm:py-20"
     >
       {/* Header */}
       <div className="max-w-2xl">
-        <p className="text-sm font-medium text-emerald-500 dark:text-emerald-300">
-          Our solution
+        <p className="text-xs sm:text-sm font-medium text-emerald-500 dark:text-emerald-300">
+          The system
         </p>
 
-        <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          A simple system that works{" "}
-          <span className="text-emerald-500 dark:text-emerald-300">24/7</span>
+        <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+          Here’s what happens when someone{" "}
+          <span className="text-emerald-500 dark:text-emerald-300">
+            contacts your business
+          </span>
         </h2>
 
-        <p className="mt-4 text-pretty text-muted-foreground">
-          We replace outdated processes with a modern booking + lead-handling
-          system that is consistent, trackable, and scalable.
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+          Instead of missed messages and manual work, every lead is captured,
+          responded to, and guided toward booking automatically.
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
-        {features.map((f, i) => (
+      {/* Flow Grid */}
+      <div className="mt-8 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step, i) => (
           <motion.div
-            key={f.title}
+            key={step.title}
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             whileInView="show"
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.3 }}
             custom={i}
+            className="h-full"
           >
-            <SolutionCard {...f} />
+            <SolutionCard {...step} index={i} />
           </motion.div>
         ))}
       </div>
+
+      {/* Bottom text */}
+      <motion.p
+        variants={fadeUp}
+        initial={reduceMotion ? "show" : "hidden"}
+        whileInView="show"
+        viewport={{ once: true }}
+        custom={5}
+        className="mt-8 sm:mt-10 max-w-2xl text-xs sm:text-sm text-muted-foreground leading-relaxed"
+      >
+        No missed leads. No delays. Just a system that works consistently — even
+        when you’re offline.
+      </motion.p>
     </Section>
   );
 }
 
-function SolutionCard({ icon: Icon, title, description }) {
+function SolutionCard({ icon: Icon, title, description, index }) {
   return (
-    <div className="group h-full rounded-2xl border border-border bg-card/40 p-6 backdrop-blur-xl transition hover:bg-card/70">
-      <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-600 dark:text-emerald-300">
-        <Icon className="h-5 w-5" />
+    <div className="relative h-full flex flex-col justify-between rounded-xl border border-border bg-card/40 p-4 sm:p-5 backdrop-blur-xl transition hover:bg-card/70 hover:border-emerald-400/30 overflow-hidden">
+      {/* Step number */}
+      <span className="absolute right-3 top-3 text-[10px] sm:text-xs font-semibold text-muted-foreground">
+        0{index + 1}
+      </span>
+
+      {/* Icon */}
+      <div className="mb-3 sm:mb-4 inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-600 dark:text-emerald-300">
+        <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
       </div>
 
-      <h3 className="text-base font-semibold tracking-tight">{title}</h3>
+      {/* Content */}
+      <div className="min-w-0">
+        <h3 className="text-sm sm:text-base font-semibold tracking-tight leading-snug">
+          {title}
+        </h3>
 
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        {description}
-      </p>
+        <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed break-words">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }

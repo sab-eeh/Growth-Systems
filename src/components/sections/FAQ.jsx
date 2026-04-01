@@ -1,4 +1,3 @@
-// components/Sections/FAQ.jsx
 "use client";
 
 import { useState } from "react";
@@ -7,39 +6,43 @@ import { ChevronDown } from "lucide-react";
 import Section from "../layout/Section";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 16, filter: "blur(8px)" },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay: 0.06 * i },
   }),
 };
 
 const FAQS = [
   {
-    q: "How long does setup usually take?",
-    a: "Most systems can be implemented in 7–14 days depending on your booking flow, tools, and how complex your follow-ups need to be.",
+    q: "I already use Calendly / WhatsApp — do I still need this?",
+    a: "Yes. Most businesses already have tools, but they’re not connected properly. We turn those tools into a complete system that responds instantly, follows up automatically, and actually converts leads into bookings.",
   },
   {
-    q: "Do I need to change my website or rebuild everything?",
-    a: "No. We can improve your current site and add the missing systems around it — booking, lead capture, follow-ups, and inquiry handling.",
+    q: "How fast will I start seeing results?",
+    a: "You’ll notice improvements as soon as the system is live. Faster responses alone can significantly increase conversions within days.",
   },
   {
-    q: "What tools do you use?",
-    a: "We use modern, reliable tools depending on your business: Calendly, Google Calendar, WhatsApp/SMS/email automation, CRMs (HubSpot/Airtable), and automation platforms like Zapier or Make.",
+    q: "Do I need to rebuild my website?",
+    a: "No. We work with what you already have. The system is added on top of your existing setup — no need to rebuild everything.",
   },
   {
-    q: "Can this work for my industry?",
-    a: "Yes. The system is designed for service businesses — clinics, real estate, agencies, local services, and professional providers.",
+    q: "Is this complicated to manage?",
+    a: "Not at all. Once installed, the system runs automatically in the background. Your team only steps in when needed — not for every message.",
   },
   {
-    q: "Is AI safe to use with client inquiries?",
-    a: "Yes, when used correctly. AI is only used for first-response handling, FAQs, and qualification — and you stay in control of the final process.",
+    q: "What if I’m not getting many leads yet?",
+    a: "This system works best when you already have some incoming inquiries. It improves conversion — not traffic generation.",
+  },
+  {
+    q: "Will this replace my staff?",
+    a: "No — it supports them. The system handles repetitive tasks like replying and follow-ups, so your team can focus on actual clients.",
   },
   {
     q: "What happens after the free audit?",
-    a: "You’ll receive a clear breakdown of what’s currently losing you leads and what to improve. If you want, we can implement it — but there’s no pressure.",
+    a: "You’ll get a clear breakdown of where you’re losing leads and what to fix. If you want help implementing it, we can set it up for you — no pressure.",
   },
 ];
 
@@ -50,36 +53,31 @@ export default function FAQ() {
   return (
     <Section
       id="faq"
-      className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24"
+      className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8 py-16 sm:py-20"
     >
-      {/* Soft separator */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_0%,rgba(16,185,129,0.06),transparent_60%)]" />
-      </div>
-
       {/* Header */}
       <motion.div
         variants={fadeUp}
         initial={reduceMotion ? "show" : "hidden"}
         whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        viewport={{ once: true }}
         custom={0}
         className="max-w-2xl"
       >
-        <p className="text-sm font-medium text-emerald-500 dark:text-emerald-300">
-          FAQ
-        </p>
-        <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          Questions business owners usually ask
+        <p className="text-xs sm:text-sm font-medium text-emerald-500">FAQ</p>
+
+        <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+          Questions before getting started
         </h2>
-        <p className="mt-4 text-pretty text-muted-foreground">
-          Clear answers — no fluff. If you still have questions, you can ask
-          during the free audit.
+
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+          Straight answers to help you understand how the system works and what
+          to expect.
         </p>
       </motion.div>
 
       {/* FAQ list */}
-      <div className="mt-12 grid gap-3">
+      <div className="mt-8 sm:mt-10 grid gap-2 sm:gap-3">
         {FAQS.map((item, i) => {
           const isOpen = openIndex === i;
 
@@ -89,40 +87,42 @@ export default function FAQ() {
               variants={fadeUp}
               initial={reduceMotion ? "show" : "hidden"}
               whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: true }}
               custom={i + 1}
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                className="w-full rounded-2xl border border-border bg-card/40 p-6 text-left backdrop-blur-xl transition hover:bg-card/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="w-full text-left rounded-xl border border-border bg-card/40 p-4 sm:p-5 backdrop-blur-xl transition hover:bg-card/70 overflow-hidden"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-semibold tracking-tight">
+                <div className="flex items-start justify-between gap-3">
+                  {/* Content */}
+                  <div className="min-w-0">
+                    <p className="text-sm sm:text-base font-semibold tracking-tight leading-snug">
                       {item.q}
                     </p>
 
+                    {/* Answer */}
                     <div
                       className={`grid transition-all duration-300 ${
                         isOpen
-                          ? "grid-rows-[1fr] opacity-100"
+                          ? "grid-rows-[1fr] opacity-100 mt-2"
                           : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed break-words">
                           {item.a}
                         </p>
                       </div>
                     </div>
                   </div>
 
+                  {/* Icon */}
                   <span
-                    className={`mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-background/40 transition ${
+                    className={`flex-shrink-0 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-border bg-background/40 transition ${
                       isOpen ? "rotate-180" : ""
                     }`}
-                    aria-hidden="true"
                   >
                     <ChevronDown className="h-4 w-4 text-foreground/70" />
                   </span>
@@ -132,6 +132,12 @@ export default function FAQ() {
           );
         })}
       </div>
+
+      {/* Bottom */}
+      <p className="mt-8 sm:mt-10 max-w-2xl text-xs sm:text-sm text-muted-foreground leading-relaxed">
+        Still unsure? The free audit will show you exactly what’s missing — and
+        whether this system is right for your business.
+      </p>
     </Section>
   );
 }

@@ -1,4 +1,3 @@
-// components/Sections/SystemExamples.jsx
 "use client";
 
 import { useMemo, useState } from "react";
@@ -11,7 +10,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import Section from "../layout/Section";
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
@@ -28,19 +26,19 @@ const SYSTEMS = [
     key: "clinic",
     label: "Clinics",
     icon: Stethoscope,
-    headline: "Reduce missed appointments and respond instantly",
+    headline: "Turn patient inquiries into booked appointments automatically",
     description:
-      "A clinic-ready setup that turns inquiries into booked appointments with confirmations, reminders, and follow-ups.",
+      "Instead of missed calls and delayed replies, every patient gets an instant response, booking option, and reminders — without manual effort.",
     flow: [
-      "Patient submits form or clicks Book",
-      "Instant confirmation + intake questions",
-      "Auto reminders before appointment",
-      "Follow-up message after visit",
-      "Reactivation flow for inactive patients",
+      "Patient submits form or clicks WhatsApp",
+      "Instant reply with booking options",
+      "Appointment scheduled automatically",
+      "Reminders sent before visit",
+      "Follow-up + reactivation after visit",
     ],
     outcomes: [
       "Fewer no-shows",
-      "Faster response time",
+      "Faster patient response time",
       "More booked appointments",
     ],
   },
@@ -48,40 +46,40 @@ const SYSTEMS = [
     key: "realestate",
     label: "Real Estate",
     icon: Building2,
-    headline: "Qualify inquiries before you waste time",
+    headline: "Filter serious buyers and book more viewings",
     description:
-      "A workflow designed for agents and teams handling high-intent leads from listings, ads, and referrals.",
+      "Stop wasting time on unqualified leads. Every inquiry is instantly responded to, qualified, and guided toward booking a viewing.",
     flow: [
-      "Lead requests a viewing or info",
+      "Lead requests property info",
       "Instant reply + qualification questions",
-      "Auto scheduling for viewings",
-      "Reminder + follow-up if no reply",
-      "Organized lead list in CRM/Sheet",
+      "Serious leads get booking link",
+      "Viewing scheduled automatically",
+      "Follow-ups sent if no response",
     ],
     outcomes: [
-      "Less time wasted",
-      "More show-ups to viewings",
-      "Better lead organization",
+      "Less time wasted on low-quality leads",
+      "More confirmed property viewings",
+      "Organized lead pipeline",
     ],
   },
   {
     key: "agency",
     label: "Agencies",
     icon: Briefcase,
-    headline: "Capture leads and keep follow-ups consistent",
+    headline: "Capture leads and book more discovery calls",
     description:
-      "An agency-focused lead capture system that handles inbound inquiries and books discovery calls faster.",
+      "Every inquiry is instantly handled, followed up, and pushed toward booking — so your pipeline stays full without manual chasing.",
     flow: [
-      "Lead fills form or DMs your page",
-      "Instant reply + booking link",
-      "Follow-up sequence if they don’t book",
+      "Lead fills form or sends DM",
+      "Instant response with booking link",
+      "Follow-up sequence if no booking",
       "Pre-call questions collected automatically",
-      "Clean handoff to your calendar + CRM",
+      "Booked call synced to your calendar",
     ],
     outcomes: [
       "More booked discovery calls",
       "Less lead leakage",
-      "More consistent pipeline",
+      "Consistent pipeline growth",
     ],
   },
 ];
@@ -90,19 +88,16 @@ export default function SystemExamples() {
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState("clinic");
 
-  const current = useMemo(
-    () => SYSTEMS.find((s) => s.key === active),
-    [active]
-  );
+  const current = SYSTEMS.find((s) => s.key === active) || SYSTEMS[0];
 
   return (
     <Section
       id="systems"
-      className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24"
+      className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8 py-16 sm:py-20"
     >
-      {/* Soft separator */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_0%,rgba(16,185,129,0.06),transparent_60%)]" />
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(800px_360px_at_50%_0%,rgba(16,185,129,0.06),transparent_60%)]" />
       </div>
 
       {/* Header */}
@@ -110,33 +105,26 @@ export default function SystemExamples() {
         variants={fadeUp}
         initial={reduceMotion ? "show" : "hidden"}
         whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
-        custom={0}
+        viewport={{ once: true }}
         className="max-w-2xl"
       >
-        <p className="text-sm font-medium text-emerald-500 dark:text-emerald-300">
-          System examples
+        <p className="text-xs sm:text-sm font-medium text-emerald-500">
+          Real examples
         </p>
 
-        <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          What the system looks like in real businesses
+        <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+          This is what your{" "}
+          <span className="text-emerald-500">system could look like</span>
         </h2>
 
-        <p className="mt-4 text-pretty text-muted-foreground">
-          Not templates. Not generic automation. These are proven workflows
-          built around how service businesses actually operate.
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+          Explore how the system works in real scenarios from first inquiry to
+          booking.
         </p>
       </motion.div>
 
       {/* Tabs */}
-      <motion.div
-        variants={fadeUp}
-        initial={reduceMotion ? "show" : "hidden"}
-        whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
-        custom={1}
-        className="mt-10 flex flex-wrap items-center gap-2"
-      >
+      <div className="mt-6 sm:mt-8 flex flex-wrap gap-2">
         {SYSTEMS.map((tab) => {
           const Icon = tab.icon;
           const isActive = tab.key === active;
@@ -144,90 +132,79 @@ export default function SystemExamples() {
           return (
             <button
               key={tab.key}
-              type="button"
               onClick={() => setActive(tab.key)}
-              className={[
-                "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              className={`flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs sm:text-sm transition ${
                 isActive
-                  ? "border-emerald-400/25 bg-emerald-400/10 text-foreground"
-                  : "border-border bg-card/40 text-muted-foreground hover:bg-card/70 hover:text-foreground",
-              ].join(" ")}
+                  ? "border-emerald-400/25 bg-emerald-400/10"
+                  : "border-border bg-card/40"
+              }`}
             >
               <Icon className="h-4 w-4" />
-              {tab.label}
+              <span className="whitespace-nowrap">{tab.label}</span>
             </button>
           );
         })}
-      </motion.div>
+      </div>
 
       {/* Content */}
-      <motion.div
-        variants={fadeUp}
-        initial={reduceMotion ? "show" : "hidden"}
-        whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
-        custom={2}
-        className="mt-8 grid gap-6 lg:grid-cols-2"
-      >
-        {/* Left */}
-        <div className="rounded-2xl border border-border bg-card/40 p-7 backdrop-blur-xl">
-          <p className="text-xs font-medium text-emerald-500 dark:text-emerald-300">
-            {current.label}
-          </p>
-
-          <h3 className="mt-3 text-xl font-semibold tracking-tight">
-            {current.headline}
-          </h3>
-
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            {current.description}
-          </p>
-
-          <div className="mt-6">
-            <p className="text-sm font-semibold tracking-tight">
-              Expected outcomes
+      <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 lg:grid-cols-2">
+        {/* LEFT */}
+        <div className="h-full flex flex-col rounded-xl border border-border bg-card/40 p-4 sm:p-5 backdrop-blur-xl overflow-hidden">
+          <div className="min-w-0">
+            <p className="text-[11px] sm:text-xs text-emerald-500">
+              {current.label}
             </p>
 
-            <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
+            <h3 className="mt-2 text-base sm:text-lg font-semibold leading-snug">
+              {current.headline}
+            </h3>
+
+            <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              {current.description}
+            </p>
+          </div>
+
+          <div className="mt-4">
+            <p className="text-xs sm:text-sm font-semibold">
+              What this improves
+            </p>
+
+            <ul className="mt-2 space-y-2 text-xs sm:text-sm text-muted-foreground">
               {current.outcomes.map((o) => (
-                <li key={o} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 dark:text-emerald-300" />
-                  <span>{o}</span>
+                <li key={o} className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span className="break-words">{o}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Right */}
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-card/40 p-7 backdrop-blur-xl">
-          <p className="text-sm font-semibold tracking-tight">
-            Workflow overview
-          </p>
+        {/* RIGHT */}
+        <div className="relative h-full flex flex-col rounded-xl border border-border bg-card/40 p-4 sm:p-5 backdrop-blur-xl overflow-hidden">
+          <p className="text-xs sm:text-sm font-semibold">Step-by-step flow</p>
 
-          <div className="mt-5 space-y-3">
+          <div className="mt-3 space-y-2">
             {current.flow.map((step, i) => (
               <div
                 key={step}
-                className="flex items-start gap-3 rounded-2xl border border-border bg-background/40 px-4 py-3"
+                className="flex items-start gap-2 rounded-xl border border-border bg-background/40 px-3 py-2"
               >
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-emerald-400/25 bg-emerald-400/10 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
+                <span className="flex-shrink-0 h-5 w-5 flex items-center justify-center rounded-full bg-emerald-400/10 text-[10px]">
                   {i + 1}
                 </span>
 
-                <div className="flex-1">
-                  <p className="text-sm text-foreground/85">{step}</p>
-                </div>
+                <p className="flex-1 text-xs sm:text-sm break-words">{step}</p>
 
-                <ArrowRight className="mt-0.5 h-4 w-4 text-muted-foreground" />
+                <ArrowRight className="h-3.5 w-3.5 flex-shrink-0" />
               </div>
             ))}
           </div>
 
-          {/* Soft glow */}
-          <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-emerald-400/12 blur-3xl" />
+          {/* Glow */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl" />
         </div>
-      </motion.div>
+      </div>
     </Section>
   );
 }

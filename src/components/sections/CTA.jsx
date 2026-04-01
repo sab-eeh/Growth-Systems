@@ -33,9 +33,9 @@ export default function CTA() {
   const [error, setError] = useState("");
 
   const bullets = [
-    "A quick review of your booking and lead flow",
-    "Where inquiries are getting lost (and why)",
-    "A clear improvement plan you can implement",
+    "Identify where you're losing potential clients",
+    "See how slow responses are affecting your bookings",
+    "Get a clear system to capture and convert more leads",
   ];
 
   const isValid =
@@ -122,7 +122,7 @@ export default function CTA() {
               custom={1}
               className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl"
             >
-              Get a free website & booking audit
+              See where you're losing clients and how to fix it
             </motion.h2>
 
             <motion.p
@@ -130,8 +130,9 @@ export default function CTA() {
               custom={2}
               className="mt-4 text-pretty text-muted-foreground"
             >
-              We’ll review your current website, booking flow, and lead handling
-              — and show you where inquiries are getting lost.
+              We’ll analyze how your leads come in, how you respond, and where
+              potential clients are slipping away — then show you exactly how to
+              fix it.
             </motion.p>
 
             {/* Bullets */}
@@ -155,7 +156,8 @@ export default function CTA() {
               custom={4}
               className="mt-8 text-xs text-muted-foreground"
             >
-              No pressure. If we’re not a fit, you’ll still leave with clarity.
+              No pressure. Even if you don’t move forward, you’ll walk away
+              knowing exactly what’s broken.
             </motion.p>
           </div>
 
@@ -163,12 +165,15 @@ export default function CTA() {
           <motion.div variants={fadeUp} custom={2}>
             <div className="rounded-2xl border border-border bg-background/40 p-6 backdrop-blur-xl sm:p-7">
               <p className="text-sm font-semibold tracking-tight">
-                Request your audit
+                Get your free audit
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Takes less than a minute. We’ll reply on WhatsApp or email.
+                Takes less than a minute. We’ll personally review and respond
+                within 24 hours.
               </p>
-
+              <p className="text-xs text-emerald-400 mt-2">
+                Most audits reveal 2–3 major conversion leaks
+              </p>
               <form onSubmit={onSubmit} className="mt-6 grid gap-4">
                 <Field label="Your name">
                   <input
@@ -270,7 +275,7 @@ export default function CTA() {
                     </>
                   ) : (
                     <>
-                      Request Free Audit
+                      Get My Free Audit
                       <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </>
                   )}

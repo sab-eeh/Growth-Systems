@@ -1,68 +1,53 @@
-// components/layout/Footer.jsx
 "use client";
+
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        {/* Top */}
+        <div className="grid gap-10 md:grid-cols-3">
           {/* Brand */}
-          <div className="space-y-2">
-            <p className="text-sm font-medium tracking-tight">Growth Systems</p>
-            <p className="text-xs text-muted-foreground">
-              Websites + booking + automation for service businesses.
+          <div>
+            <p className="text-base font-semibold">Growth Systems</p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              We install systems that capture, respond, and convert your leads
+              automatically — so you stop losing clients.
             </p>
           </div>
 
-          {/* Links */}
-          <nav
-            aria-label="Footer"
-            className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
-          >
-            <Link
-              href="#solutions"
-              className="transition hover:text-foreground"
-            >
-              Solutions
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="transition hover:text-foreground"
-            >
-              Process
-            </Link>
-            <Link
-              href="#industries"
-              className="transition hover:text-foreground"
-            >
-              Industries
-            </Link>
-            <Link href="#audit" className="transition hover:text-foreground">
-              Free Audit
-            </Link>
-          </nav>
+          {/* Navigation */}
+          <div>
+            <p className="text-sm font-semibold">Navigation</p>
+            <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
+              <Link href="#system">The system</Link>
+              <Link href="#how-it-works">How it works</Link>
+              <Link href="#industries">Who it's for</Link>
+              <Link href="#faq">FAQ</Link>
+            </div>
+          </div>
 
-          {/* Contact */}
-          <div className="text-sm text-muted-foreground">
-            <a
-              href="mailto:hello@yourdomain.com"
-              className="transition hover:text-foreground"
+          {/* CTA */}
+          <div>
+            <p className="text-sm font-semibold">Get started</p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Find out where you're losing leads and how to fix it.
+            </p>
+
+            <Link
+              href="#audit"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400"
             >
-              hello@yourdomain.com
-            </a>
+              Get Free Audit
+            </Link>
           </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>
-            © {new Date().getFullYear()} Growth Systems. All rights reserved.
-          </p>
-
-          <p>
-            Built with performance, accessibility, and clean systems in mind.
-          </p>
+        {/* Bottom */}
+        <div className="mt-12 border-t border-border pt-6 flex flex-col gap-3 text-xs text-muted-foreground md:flex-row md:justify-between">
+          <p>© {new Date().getFullYear()} Growth Systems</p>
+          <p>Built for service businesses that rely on leads</p>
         </div>
       </div>
     </footer>

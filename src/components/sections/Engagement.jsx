@@ -1,4 +1,3 @@
-// components/Sections/Engagement.jsx
 "use client";
 
 import Link from "next/link";
@@ -11,7 +10,6 @@ import {
   LineChart,
 } from "lucide-react";
 import Section from "../layout/Section";
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
@@ -29,38 +27,38 @@ export default function Engagement() {
   const plans = [
     {
       icon: Rocket,
-      title: "Free Audit",
+      title: "Free System Audit",
       tag: "Start here",
       points: [
-        "Review your current website + booking flow",
-        "Identify lead drop-off points",
-        "Clear action plan (no pressure)",
+        "We analyze how your leads are coming in",
+        "Identify where you're losing potential clients",
+        "Show you exactly what to fix (no pressure)",
       ],
-      cta: { label: "Request audit", href: "#audit" },
+      cta: { label: "See where you're losing leads", href: "#audit" },
       highlight: true,
     },
     {
       icon: Wrench,
-      title: "Setup Sprint",
-      tag: "1–2 weeks",
+      title: "System Installation",
+      tag: "7-day setup",
       points: [
-        "Online booking + lead capture setup",
-        "Instant responses + follow-ups",
-        "Clean handoff + team walkthrough",
+        "Instant response + booking system setup",
+        "Automated follow-ups and reminders",
+        "Fully connected with your existing tools",
       ],
-      cta: { label: "See how it works", href: "#how-it-works" },
+      cta: { label: "See how the system works", href: "#system" },
       highlight: false,
     },
     {
       icon: LineChart,
-      title: "Optimization",
+      title: "Ongoing Optimization",
       tag: "Optional",
       points: [
         "Improve conversions over time",
-        "Adjust messaging + automation flows",
-        "Track performance and iterate",
+        "Refine messaging and follow-ups",
+        "Track performance and scale results",
       ],
-      cta: { label: "Explore solutions", href: "#solutions" },
+      cta: { label: "Explore the system", href: "#solutions" },
       highlight: false,
     },
   ];
@@ -70,7 +68,7 @@ export default function Engagement() {
       id="engagement"
       className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24"
     >
-      {/* Soft separator background */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_0%,rgba(16,185,129,0.06),transparent_60%)]" />
       </div>
@@ -85,16 +83,19 @@ export default function Engagement() {
         className="max-w-2xl"
       >
         <p className="text-sm font-medium text-emerald-500 dark:text-emerald-300">
-          Engagement
+          Get started
         </p>
 
         <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          A simple way to work together
+          How you can start{" "}
+          <span className="text-emerald-500 dark:text-emerald-300">
+            capturing more clients
+          </span>
         </h2>
 
         <p className="mt-4 text-pretty text-muted-foreground">
-          No long contracts. No confusion. We start with a free audit, then
-          implement the system in a short sprint.
+          Simple steps. No long-term contracts. Start with clarity, then get
+          your system live quickly.
         </p>
       </motion.div>
 
@@ -113,6 +114,18 @@ export default function Engagement() {
           </motion.div>
         ))}
       </div>
+
+      {/* 🔥 Bottom reinforcement */}
+      <motion.p
+        variants={fadeUp}
+        initial={reduceMotion ? "show" : "hidden"}
+        whileInView="show"
+        viewport={{ once: true }}
+        custom={4}
+        className="mt-10 max-w-2xl text-sm text-muted-foreground"
+      >
+        Most businesses start seeing improvements as soon as the system is live.
+      </motion.p>
     </Section>
   );
 }
@@ -121,18 +134,17 @@ function EngagementCard({ icon: Icon, title, tag, points, cta, highlight }) {
   return (
     <div
       className={[
-        "group relative h-full overflow-hidden rounded-2xl border bg-card/40 p-7 backdrop-blur-xl transition hover:bg-card/70",
+        "group relative h-full overflow-hidden rounded-2xl border bg-card/40 p-7 backdrop-blur-xl transition hover:bg-card/70 hover:border-emerald-400/30",
         highlight ? "border-emerald-400/25" : "border-border",
       ].join(" ")}
     >
-      {/* Corner glow for highlight */}
-      {highlight ? (
+      {highlight && (
         <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-emerald-400/12 blur-3xl" />
-      ) : null}
+      )}
 
       <div className="relative">
         <div className="flex items-start justify-between gap-4">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-600 dark:text-emerald-300">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-600">
             <Icon className="h-5 w-5" />
           </div>
 
@@ -146,7 +158,7 @@ function EngagementCard({ icon: Icon, title, tag, points, cta, highlight }) {
         <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
           {points.map((pt) => (
             <li key={pt} className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 dark:text-emerald-300" />
+              <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
               <span className="leading-relaxed">{pt}</span>
             </li>
           ))}

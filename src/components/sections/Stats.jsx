@@ -1,10 +1,8 @@
-// components/Sections/Stats.jsx
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Clock, ShieldCheck, MessagesSquare, Layers3 } from "lucide-react";
 import Section from "../layout/Section";
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 14, filter: "blur(10px)" },
@@ -12,7 +10,7 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.65, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay: 0.06 * i, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
@@ -43,16 +41,17 @@ export default function Stats() {
   ];
 
   return (
-    <Section className="relative z-10 mx-auto -mt-10 max-w-6xl px-4 sm:px-6">
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+    <Section className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 md:px-8 -mt-6 md:-mt-8">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
         {items.map((item, i) => (
           <motion.div
             key={item.value}
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.3 }}
             custom={i}
+            className="h-full"
           >
             <StatCard {...item} />
           </motion.div>
@@ -64,16 +63,20 @@ export default function Stats() {
 
 function StatCard({ icon: Icon, value, label }) {
   return (
-    <div className="rounded-2xl border border-border bg-card/40 p-5 text-left backdrop-blur-xl transition hover:bg-card/70">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-lg font-semibold tracking-tight">{value}</p>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+    <div className="h-full flex flex-col justify-between rounded-xl border border-border bg-card/40 p-4 sm:p-5 backdrop-blur-xl transition hover:bg-card/70 overflow-hidden">
+      <div className="flex items-start justify-between gap-3">
+        {/* Text */}
+        <div className="min-w-0">
+          <p className="text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-tight">
+            {value}
+          </p>
+          <p className="mt-1 text-[11px] sm:text-xs leading-snug text-muted-foreground break-words">
             {label}
           </p>
         </div>
 
-        <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-background/40">
+        {/* Icon */}
+        <span className="flex-shrink-0 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-border bg-background/40">
           <Icon className="h-4 w-4 text-foreground/80" />
         </span>
       </div>
