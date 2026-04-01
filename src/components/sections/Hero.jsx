@@ -116,7 +116,7 @@ export default function Hero() {
           </motion.p>
 
           {/* TRUST GRID (FIXED 🔥) */}
-          <motion.div
+          {/* <motion.div
             variants={fadeUp}
             initial={reduceMotion ? "show" : "hidden"}
             animate="show"
@@ -127,7 +127,7 @@ export default function Hero() {
             <TrustItem icon={Zap} text="Installed in 7 days" />
             <TrustItem icon={CalendarCheck} text="More booked appointments" />
             <TrustItem icon={MessageSquareText} text="Instant responses" />
-          </motion.div>
+          </motion.div> */}
 
           <div className="mx-auto mt-10 h-px w-full max-w-xl bg-gradient-to-r from-transparent via-border to-transparent" />
         </div>
